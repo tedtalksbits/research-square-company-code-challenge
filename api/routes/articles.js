@@ -41,12 +41,16 @@ router.post("/articles", (req, res) => {
    }
 });
 
-// GET all articles
+// GET all approved articles
 router.get("/articles", (req, res) => {
+   const approvedArticles = tempDb.filter(
+      (article) => article.approved === true
+   );
+
    try {
       res.status(200).json({
          status: "200 ok",
-         data: tempDb,
+         data: approvedArticles,
       });
    } catch (error) {
       res.status(500).json({
