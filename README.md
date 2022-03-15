@@ -128,3 +128,13 @@ The REST API to the example app is described below.
           "date": "3/1/2022"
           "approved_date": "3/2/2022"
      }
+
+## Built with
+
+-  NodeJS
+-  ExpressJS
+
+**Dependenies**
+
+-  <a href="https://nodemon.io/">nodemon</a> // a utility that monitor for any changes in your source and automatically restart your server.
+-  <a href="https://github.com/uuidjs/uuid#readme">UUID</a> //generate unique ids
