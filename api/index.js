@@ -8,8 +8,12 @@ app.use(express.json());
 
 /************************** Routes **************************/
 app.get("/", (req, res) => {
-   // send index html to "/" route with information about API endpoints
-   res.status(200).send("Welcome the Research Square Company API");
+   res.status(200).send(
+      `
+     <h1>Welcome the Research Square Company API</h1>
+     <p>Take a look at the <a href="https://github.com/tedtalksbits/research-square-company-code-challenge">documentation </a>on github</p> 
+     `
+   );
 });
 app.use("/api/", ArticleRoutes);
 

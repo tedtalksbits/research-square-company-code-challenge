@@ -1,24 +1,46 @@
 # Research Square Company Code Challenge
 
-At Research Square Company we receive articles from researchers to be published as a preprint. Before publishing their article, it must be approved by an admin.
-
-This is a simple proof of concept web application to test this concept.
+This is a simple proof of concept web application that allows users to post an article and admin users to approve articles.
 
 **Application Directory layout**
 .
 ├── api
-├── client
 └── README.md
 
 ## Install
 
-    npm install
+` 1. navigate to the /api directory`
+`2. install dependencies`
+
+     cd api
+     npm install
 
 ## Run the app
 
+     npm start
+
 ## Run the tests
 
-_using postman_
+_using postman:_
+
+**Public route:** post a new article
+
+     post http://localhost:5099/articles
+
+     accepts the following JSON object...
+      {
+          "title": "string" //required,
+          "authors": ["string"] //required,
+          "article": "string" //required
+          "abstract": "string" //required
+     }
+
+**Admin routes**: change article approved status
+
+     get http://localhost:5099/articles
+     put http://localhost:5099/article/id
+
+     where **id** is required
 
 # REST API
 
@@ -34,29 +56,75 @@ The REST API to the example app is described below.
 
 ### Response
 
-    HTTP/1.1 200 OK
-    Date: Thu, 24 Feb 2011 12:36:30 GMT
-    Status: 200 OK
-    Connection: close
-    Content-Type: application/json
-    Content-Length: 2
+     {
+          status: "ok",
+          data:[
+               {
+                    "id": 1,
+                    "title": "Super fun article",
+                    "authors": ["Jane Doe","John Doe" ],
+                    "abstract": "Articles are meant to be fun.",
+                    "article": "Articles are meant to be fun. \n That is why this one
+                    is so fun."
+                    "approved": true,
+                    "date": "3/15/2022"
+               }
+          ]
+     }
 
 ## Submit a new article
 
 ### Request
 
-`POST /article/`
+`POST /articles`
 
     curl http://localhost:5099/article
 
+    {
+         "title": "Super fun article",
+          "authors": ["Jane Doe","John Doe" ],
+          "abstract": "Articles are meant to be fun.",
+          "article": "Articles are meant to be fun. \n That is why this one
+          is so fun."
+    }
+
 ### Response
 
-    HTTP/1.1 201 Created
-    Date: Thu, 24 Feb 2011 12:36:30 GMT
-    Status: 201 Created
-    Connection: close
-    Content-Type: application/json
-    Location: /thing/1
-    Content-Length: 36
+    header 'Content-Type: application/json'
+     data:{
+          id: "123",
+          "title": "Super fun article",
+          "authors": ["Jane Doe","John Doe" ],
+          "abstract": "Articles are meant to be fun.",
+          "article": "Articles are meant to be fun. \n That is why this one
+          is so fun."
+          "approved": false,
+          "date": "3/1/2022"
+     }
 
-    {"id":1,"name":"Foo","status":"new"}
+## Change approved status
+
+### Request
+
+`PUT /article/123`
+
+    curl http://localhost:5099/article/123
+
+    {
+         "approved": true,
+    }
+
+### Response
+
+    header 'Content-Type: application/json'
+     data :{
+          "id": "123"
+          "title": "Super fun article",
+          "authors": ["Jane Doe","John Doe" ],
+          "abstract": "Articles are meant to be fun.",
+          "article": "Articles are meant to be fun. \n That is why this one
+          is so fun."
+          "approved": true,
+          "date": "3/1/2022"
+          "approved_date": "3/2/2022"
+     }
