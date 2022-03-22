@@ -1,17 +1,7 @@
 import { Box, Container, Heading, Stack, Text } from '@chakra-ui/react';
-import React, { useEffect } from 'react';
-import { getApproved } from '../api/actions';
 import { ArticleForm } from '../components/ArticleForm';
 
 export const Home = () => {
-  const fetchArticles = async () => {
-    const data = await getApproved();
-    console.log(data);
-  };
-  useEffect(() => {
-    fetchArticles();
-  }, []);
-
   return (
     <Box as="section">
       <Box as="header" bg={'gray.200'} minBlockSize={'40vh'}>
