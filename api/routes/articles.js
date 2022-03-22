@@ -2,13 +2,18 @@ import express from "express";
 import { v4 as uuidv4 } from "uuid";
 const router = express.Router();
 
+const articleStatus = {
+  approved: "approved",
+  pending: "pending",
+  disapproved: "disapproved",
+};
 const tempDb = [
   {
     id: "1",
     title: "Test article 1",
     authors: ["Jane Doe", "John Doe"],
     article: "The theory of everything",
-    approved: false,
+    status: articleStatus.approved,
     date: "3/22/2022",
   },
   {
@@ -16,8 +21,19 @@ const tempDb = [
     title: "Test article 2",
     authors: ["James Doe", "Jesse Doe"],
     article: "Lovely",
+    abstract:
+      "You do not need to implement authentication, authorization, or permissions for any pages or api endpoints.",
+    status: articleStatus.pending,
+    date: "3/1/2022",
+  },
+  {
+    id: "3",
+    title: "Test article 3",
+    authors: ["June Doe", "May Doe"],
+    article:
+      "Your job is to create a simple proof of concept web application to test this concept.",
     abstract: "Abstract",
-    approved: true,
+    status: articleStatus.disapproved,
     date: "3/1/2022",
   },
 ];
@@ -35,7 +51,7 @@ router.post("/articles", (req, res) => {
       authors,
       abstract,
       article,
-      approved: false,
+      status: "pending",
       date: new Date().toLocaleDateString(),
     };
     try {
@@ -60,18 +76,15 @@ router.post("/articles", (req, res) => {
 });
 
 // GET (approved articles)
-// ISSUE
-//What? Maybe useful to render all article public with an approval status instead
-// Why? Bad UX, users can't view article unless approved
+// ISSUE: "A public page for researchers to view all approved articles"
+// What? Maybe useful to render all articles public with an approval status instead
+// Why? 1. Bad UX, users can't view article unless approved. 2. Need a seperate route for admin to get all articles
+// fix? articles have a status propertie
 router.get("/articles", (req, res) => {
-  const approvedArticles = tempDb.filter(
-    (article) => article.approved === true
-  );
-
   try {
     res.status(200).json({
       status: "200 ok",
-      data: approvedArticles,
+      data: tempDb,
     });
   } catch (error) {
     res.status(500).json({
@@ -84,12 +97,16 @@ router.get("/articles", (req, res) => {
 // Approve/Disapprove an article
 router.put("/article/:id", (req, res) => {
   const { id } = req.params;
-  const { approved } = req.body;
+  const { status } = req.body;
 
   // newApprovalValue is required and must be a boolean
-  if (typeof approved !== "boolean") {
+  if (
+    status !== articleStatus.approved ||
+    articleStatus.pending ||
+    articleStatus.disapproved
+  ) {
     return res.status(400).json({
-      error_msg: "To update article, approved field must be true/false",
+      error_msg: `Incorrect status: '${status}'. Article status can only be: pending, approved, or disapproved.`,
     });
   }
 
@@ -98,7 +115,7 @@ router.put("/article/:id", (req, res) => {
 
   // create a new updated article and change the value of approved to newApprovalValue
   const updatedArticle = requestedArticle.map((article) => {
-    return { ...article, approved: approved };
+    return { ...article, status: status };
   });
 
   // find the index of requestedArticle in tempDb
