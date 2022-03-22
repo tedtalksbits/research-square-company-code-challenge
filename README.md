@@ -1,3 +1,5 @@
+![logo](https://uploads-ssl.webflow.com/5f3420025b90061b5a79e42e/5f4d114e0536dc4e82e0162f_rs-logo-company.svg)
+
 # Research Square Company Code Challenge
 
 This is a simple proof of concept web application that allows users to post an article and admin users to approve articles.
@@ -5,19 +7,26 @@ This is a simple proof of concept web application that allows users to post an a
 **Application Directory layout**
 .
 ├── api
+├── client
 └── README.md
+
+# Backend Getting Started
 
 ## Install
 
-` 1. navigate to the /api directory`
-`2. install dependencies`
+1. navigate to the /api directory`
+2. install dependencies`
 
-     cd api
-     npm install
+```shell
+cd api
+npm install
+```
 
-## Run the app
+## Start up server
 
-     npm start
+```shell
+npm start
+```
 
 ## Run the tests
 
@@ -131,10 +140,10 @@ The REST API to the example app is described below.
 
 ## Built with
 
--  NodeJS
--  ExpressJS
+- NodeJS
+- ExpressJS
 
 **Dependenies**
 
--  <a href="https://nodemon.io/">nodemon</a> // a utility that monitor for any changes in your source and automatically restart your server.
--  <a href="https://github.com/uuidjs/uuid#readme">UUID</a> //generate unique ids
+- <a href="https://nodemon.io/">nodemon</a> // a utility that monitor for any changes in your source and automatically restart your server.
+- <a href="https://github.com/uuidjs/uuid#readme">UUID</a> //generate unique ids
