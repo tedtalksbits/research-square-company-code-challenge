@@ -92,15 +92,17 @@ export const Admin = () => {
                 <Td>{article.title}</Td>
                 <Td>{article.authors}</Td>
                 <Td>{article.article}</Td>
+                <Td>{article?.abstract}</Td>
                 <Td>{article.status}</Td>
                 <Td>{article.date}</Td>
-                <Td>{article?.abstract}</Td>
                 <Td>{article?.approvedDate}</Td>
 
                 <Td>
                   <Select
+                    width={'fit-content'}
                     placeholder={article?.staus}
                     onChange={e => handleChange(e, article.id)}
+                    style={{ width: 'fit-content' }}
                   >
                     <option
                       value="approved"

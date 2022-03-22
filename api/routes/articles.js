@@ -13,6 +13,7 @@ const tempDb = [
     title: "Test article 1",
     authors: ["Jane Doe", "John Doe"],
     article: "The theory of everything",
+    abstract: "",
     status: articleStatus.approved,
     date: "3/22/2022",
   },

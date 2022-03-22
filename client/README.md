@@ -54,12 +54,3 @@ Once you have made changes, don't forget to add and commit those changes.
 ```console
 npm start
 ```
-
-_then..._
-
-```console
-git commit -m "chore: a summary of the code changes"
-```
-
-<hr />
- **Install dependencies**
