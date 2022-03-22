@@ -1,10 +1,21 @@
 import React from 'react';
 import { ChakraProvider, Box, theme } from '@chakra-ui/react';
-
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Home } from './pages/Home';
+import { Admin } from './pages/Admin';
+import { Nav } from './components/Nav';
 function App() {
   return (
     <ChakraProvider theme={theme}>
-      <Box>hello world</Box>
+      <Router>
+        <Box as={'main'}>
+          <Nav />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/admin" element={<Admin />} />
+          </Routes>
+        </Box>
+      </Router>
     </ChakraProvider>
   );
 }
