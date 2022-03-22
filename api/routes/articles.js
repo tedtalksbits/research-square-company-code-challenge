@@ -106,7 +106,7 @@ router.put("/article/:id", (req, res) => {
     articleStatus.disapproved
   ) {
     return res.status(400).json({
-      error_msg: `Incorrect status: '${status}'. Article status can only be: pending, approved, or disapproved.`,
+      error_msg: `Incorrect status: '${status}'. Article status can only be: ${articleStatus.approved}, ${articleStatus.pending}, or ${articleStatus.disapproved}.`,
     });
   }
 
