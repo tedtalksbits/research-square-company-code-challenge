@@ -88,7 +88,7 @@ export const Admin = () => {
       >
         <Heading mb={20}>Approve an article</Heading>
         <Table variant="simple">
-          <TableCaption>{articles.length} Articles</TableCaption>
+          <TableCaption>{articles?.length} Articles</TableCaption>
           <Thead>
             <Tr>
               {articles &&
