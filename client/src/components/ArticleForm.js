@@ -11,7 +11,7 @@ import {
   Textarea,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
-import { API } from '../api/contants';
+import { postArticle } from '../api/actions';
 
 export const ArticleForm = () => {
   const [authors, setAuthors] = useState([]);
@@ -25,16 +25,10 @@ export const ArticleForm = () => {
     msg: '',
     msgBoxColor: '',
   });
-  const postArticle = async () => {
+  const submit = async () => {
     if (newArticle.title && newArticle.authors && newArticle.article) {
       try {
-        await fetch(API, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ ...newArticle, authors: authors }),
-        });
+        await postArticle({ ...newArticle, authors: authors });
         setFormMessage({
           ...formMessage,
           msg: 'Success!',
@@ -180,7 +174,7 @@ export const ArticleForm = () => {
           bgGradient: 'linear(to-r, green.300,green.500)',
           boxShadow: 'xl',
         }}
-        onClick={postArticle}
+        onClick={submit}
       >
         Submit
       </Button>
