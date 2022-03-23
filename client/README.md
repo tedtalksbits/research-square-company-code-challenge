@@ -2,14 +2,14 @@
 
 # Research Square Company
 
-This is a simple app that contacts an API
+Welcome to Preprint©, a simple app designed and developed by [Tedane Blake](https://tedtalksbits.github.io/tedaneblakedev/)
 
 ## Built with
 
 - ⚛️ React JS [learn more](https://reactjs.org/)
 - Chakra UI [learn more](https://chakra-ui.com/)
 
-## How to run app
+## How to run the app
 
 **1. Fork this repository**
 Forking saves a copy of the project on your account
@@ -49,7 +49,10 @@ npm install
 
 **4. Run the app locally**
 
-Once you have made changes, don't forget to add and commit those changes.
+> _Note📝 :**Make sure server is running**_
+> Please see api [ documentation](../README.md)
+
+Once you have all dependencies installed and the server running, run:
 
 ```console
 npm start

@@ -5,12 +5,13 @@
 This is a simple proof of concept web application that allows users to post an article and admin users to approve articles.
 
 **Application Directory layout**
-.
-├── api
-├── client
-└── README.md
+─ api
+─ client
+─ README.md
 
 # Backend Getting Started
+
+[Frontend Getting Started](./client/README.md)
 
 ## Install
 
@@ -28,28 +29,31 @@ npm install
 npm start
 ```
 
+You should see a message like this:
+![screenshot terminal](https://i.imgur.com/zrVHqCp.png)
+
 ## Run the tests
 
 _using postman:_
 
 **Public route:** post a new article
 
-     post http://localhost:5099/articles
+     POST: http://localhost:5099/articles
 
      accepts the following JSON object...
       {
           "title": "string" //required,
           "authors": ["string"] //required,
           "article": "string" //required
-          "abstract": "string" //required
+          "abstract": "string" //not required
      }
 
 **Admin routes**: change article approved status
 
-     get http://localhost:5099/articles
-     put http://localhost:5099/article/id
+     GET: http://localhost:5099/articles
+     PUT: http://localhost:5099/article/id
 
-     where **id** is required
+     where 'id' is required
 
 # REST API
 
@@ -75,7 +79,7 @@ The REST API to the example app is described below.
                     "abstract": "Articles are meant to be fun.",
                     "article": "Articles are meant to be fun. \n That is why this one
                     is so fun."
-                    "approved": true,
+                    "status": "approved",
                     "date": "3/15/2022"
                }
           ]
@@ -107,7 +111,7 @@ The REST API to the example app is described below.
           "abstract": "Articles are meant to be fun.",
           "article": "Articles are meant to be fun. \n That is why this one
           is so fun."
-          "approved": false,
+          "status": "pending",
           "date": "3/1/2022"
      }
 
@@ -120,8 +124,10 @@ The REST API to the example app is described below.
     curl http://localhost:5099/article/123
 
     {
-         "approved": true,
+         "status": "pending"
     }
+
+> The status property accepts the following string: **"pending"** || **"approved"** || **"disapproved"**
 
 ### Response
 
@@ -133,7 +139,7 @@ The REST API to the example app is described below.
           "abstract": "Articles are meant to be fun.",
           "article": "Articles are meant to be fun. \n That is why this one
           is so fun."
-          "approved": true,
+          "status": "pending",
           "date": "3/1/2022"
           "approved_date": "3/2/2022"
      }
@@ -147,3 +153,7 @@ The REST API to the example app is described below.
 
 - <a href="https://nodemon.io/">nodemon</a> // a utility that monitor for any changes in your source and automatically restart your server.
 - <a href="https://github.com/uuidjs/uuid#readme">UUID</a> //generate unique ids
+
+# Frontend Getting Started
+
+[How to run app locally](./client/README.md)
