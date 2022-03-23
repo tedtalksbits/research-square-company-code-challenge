@@ -51,7 +51,7 @@ export const ArticleForm = () => {
     } else {
       setFormMessage({
         ...formMessage,
-        msg: 'Title, authors, and article fields must not be empty',
+        msg: 'Please fill out the required fields*',
         msgBoxColor: 'red.200',
       });
     }
@@ -116,10 +116,11 @@ export const ArticleForm = () => {
           ))}
         </HStack>
         <Input
-          placeholder="Authors"
+          placeholder="*Authors"
           bg={'gray.100'}
           border={0}
           name="authors"
+          outlineColor={formMessage.msgBoxColor}
           color={'gray.500'}
           _placeholder={{
             color: 'gray.500',
@@ -128,10 +129,11 @@ export const ArticleForm = () => {
           onBlur={handleAddAuthor}
         />
         <Input
-          placeholder="Title"
+          placeholder="*Title"
           bg={'gray.100'}
           border={0}
           name="title"
+          outlineColor={formMessage.msgBoxColor}
           color={'gray.500'}
           _placeholder={{
             color: 'gray.500',
@@ -140,10 +142,11 @@ export const ArticleForm = () => {
           onChange={handleInputChange}
         />
         <Textarea
-          placeholder="Article"
+          placeholder="*Article"
           bg={'gray.100'}
           border={0}
           name="article"
+          outlineColor={formMessage.msgBoxColor}
           color={'gray.500'}
           _placeholder={{
             color: 'gray.500',
