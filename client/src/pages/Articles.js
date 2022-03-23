@@ -41,7 +41,11 @@ export const Articles = () => {
             <Heading>{article?.title}</Heading>
             <Text>{article?.article}</Text>
             <Text>{article?.abstract}</Text>
-            <Text>{article.authors}</Text>
+            {article.authors.map((author, key) => (
+              <Text key={key} as={'span'} color={'green.400'} mr={3}>
+                {author}
+              </Text>
+            ))}
           </Box>
         ))}
       </Container>

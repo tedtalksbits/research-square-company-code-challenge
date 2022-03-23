@@ -1,4 +1,5 @@
 import {
+  Badge,
   Box,
   Container,
   Heading,
@@ -12,6 +13,7 @@ import {
   Th,
   Thead,
   Tr,
+  VStack,
 } from '@chakra-ui/react';
 
 import React, { useEffect, useState } from 'react';
@@ -73,7 +75,17 @@ export const Admin = () => {
           </Stack>
         </Container>
       </Box>
-      <Box my={20} textAlign={'center'} maxInlineSize={'120ch'} m={'auto'}>
+      <Box
+        m={'4rem auto'}
+        textAlign={'center'}
+        maxInlineSize={'150ch'}
+        border={'1px'}
+        borderRadius={'lg'}
+        borderColor={'gray.200'}
+        p={4}
+        shadow={'lg'}
+        bg={'white'}
+      >
         <Heading mb={20}>Approve an article</Heading>
         <Table variant="simple">
           <TableCaption>Articles</TableCaption>
@@ -90,10 +102,35 @@ export const Admin = () => {
               <Tr key={key}>
                 <Td>{article.id.substr(0, 3) + '...'}</Td>
                 <Td>{article.title}</Td>
-                <Td>{article.authors}</Td>
+                <Td>
+                  <VStack alignItems={'left'}>
+                    {article.authors.map((author, key) => (
+                      <Text
+                        textAlign={'left'}
+                        key={key}
+                        as={'span'}
+                        color={'green.400'}
+                      >
+                        {author}
+                      </Text>
+                    ))}
+                  </VStack>
+                </Td>
                 <Td>{article.article}</Td>
                 <Td>{article?.abstract}</Td>
-                <Td>{article.status}</Td>
+                <Td>
+                  <Badge
+                    bg={
+                      article.status === 'approved'
+                        ? 'green.100'
+                        : article.status === 'pending'
+                        ? 'orange.100'
+                        : 'red.100'
+                    }
+                  >
+                    {article.status}
+                  </Badge>
+                </Td>
                 <Td>{article.date}</Td>
                 <Td>{article?.approvedDate}</Td>
                 <Td>
