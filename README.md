@@ -5,7 +5,7 @@
 This is a simple proof of concept web application that allows users to post an article and admin users to approve articles.
 
 **Application Directory layout**
-─ api
+─ API
 ─ client
 ─ README.md
 
@@ -23,7 +23,7 @@ cd api
 npm install
 ```
 
-## Start up server
+## Startup server
 
 ```shell
 npm start
@@ -59,7 +59,7 @@ _using postman:_
 
 The REST API to the example app is described below.
 
-## Get list of approved articles
+## Get the list of approved articles
 
 ### Request
 
@@ -149,7 +149,7 @@ The REST API to the example app is described below.
 - NodeJS
 - ExpressJS
 
-**Dependenies**
+**Dependencies**
 
 - <a href="https://nodemon.io/">nodemon</a> // a utility that monitor for any changes in your source and automatically restart your server.
 - <a href="https://github.com/uuidjs/uuid#readme">UUID</a> //generate unique ids
