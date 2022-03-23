@@ -36,7 +36,7 @@ export const Home = () => {
           </Stack>
         </Container>
       </Box>
-      <Container mt={20}>
+      <Container my={20}>
         <Heading>Submit an article for approval</Heading>
         <ArticleForm />
       </Container>

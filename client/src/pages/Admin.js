@@ -73,7 +73,7 @@ export const Admin = () => {
           </Stack>
         </Container>
       </Box>
-      <Box mt={20} textAlign={'center'} maxInlineSize={'120ch'} m={'auto'}>
+      <Box my={20} textAlign={'center'} maxInlineSize={'120ch'} m={'auto'}>
         <Heading mb={20}>Approve an article</Heading>
         <Table variant="simple">
           <TableCaption>Articles</TableCaption>
@@ -96,7 +96,6 @@ export const Admin = () => {
                 <Td>{article.status}</Td>
                 <Td>{article.date}</Td>
                 <Td>{article?.approvedDate}</Td>
-
                 <Td>
                   <Select
                     width={'fit-content'}

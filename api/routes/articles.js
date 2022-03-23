@@ -114,7 +114,7 @@ router.put("/article/:id", (req, res) => {
         const updatedArticle = {
           ...article,
           status: status,
-          appovedDate: new Date().toLocaleDateString(),
+          approvedDate: new Date().toLocaleDateString(),
         };
         if (article.id === id) {
           Object.assign(article, updatedArticle);
